@@ -51,4 +51,23 @@ describe('HeroesComponent (deep tests)', () => {
       expect(heroComponentDE.componentInstance.hero).toEqual(heroes[index]);
     });
   });
+
+  it(`should call delete on Heroes component when the delete button is clicked
+    on the Hero Component`, () => {
+    spyOn(fixture.componentInstance, 'delete');
+
+    const heroComponentDEs = fixture.debugElement.queryAll(
+      By.directive(HeroComponent)
+    );
+
+    heroComponentDEs.forEach((heroComponentDE, index) => {
+      heroComponentDE
+        .query(By.css('button'))
+        .triggerEventHandler('click', { stopPropagation: () => {} });
+
+      expect(fixture.componentInstance.delete).toHaveBeenCalledWith(
+        heroes[index]
+      );
+    });
+  });
 });
