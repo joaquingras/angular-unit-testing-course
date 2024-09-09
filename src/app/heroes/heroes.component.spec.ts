@@ -1,5 +1,4 @@
-import { from, Observable, of } from 'rxjs';
-import { HeroService } from '../hero.service';
+import { of } from 'rxjs';
 import { HeroesComponent } from './heroes.component';
 import { Hero } from '../hero';
 
@@ -41,4 +40,6 @@ describe('HeroesComponent', () => {
 
     expect(mockHeroService.deleteHero).toHaveBeenCalledWith(hero);
   });
+
+
 });
