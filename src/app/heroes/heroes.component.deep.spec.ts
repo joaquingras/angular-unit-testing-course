@@ -61,9 +61,10 @@ describe('HeroesComponent (deep tests)', () => {
     );
 
     heroComponentDEs.forEach((heroComponentDE, index) => {
-      heroComponentDE
-        .query(By.css('button'))
-        .triggerEventHandler('click', { stopPropagation: () => {} });
+      // heroComponentDE
+      //   .query(By.css('button'))
+      //   .triggerEventHandler('click', { stopPropagation: () => {} });
+      (<HeroComponent>heroComponentDE.componentInstance).delete.emit(null)
 
       expect(fixture.componentInstance.delete).toHaveBeenCalledWith(
         heroes[index]
